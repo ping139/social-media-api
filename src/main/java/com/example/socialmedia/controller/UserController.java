@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.socialmedia.service.UserService;
+import com.example.socialmedia.vo.LoginRequest;
 import com.example.socialmedia.vo.RegisterRequest;
 import com.example.socialmedia.vo.Response;
 
@@ -26,6 +27,11 @@ public class UserController {
         } catch (Exception e) {
             return new Response("N", "註冊失敗：" + e.getMessage());
         }
+    }
+
+    @PostMapping("/login")
+    public Response login(@RequestBody LoginRequest request) {
+        return userService.login(request.getEmail(), request.getPassword());
     }
 }
 
