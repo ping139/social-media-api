@@ -42,7 +42,7 @@ public class UserService {
 
         // 比對密碼
         if (passwordEncoder.matches(rawPassword, user.getPassword())) {
-            return new Response("Y", "登入成功");
+            return new Response("Y", "登入成功", user);
         } else {
             return new Response("N", "密碼錯誤");
         }
