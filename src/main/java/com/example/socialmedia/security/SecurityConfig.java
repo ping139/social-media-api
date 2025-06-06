@@ -17,7 +17,8 @@ public class SecurityConfig {
                                 .requestMatchers(
                                         "/api/users/register",
                                         "/api/users/login",
-                                        "/api/users/logout"
+                                        "/api/users/logout",
+                                        "/api/posts/**"
                                 ).permitAll()  // 這三個路由放行，不需要登入
                                 .anyRequest().authenticated()  // 其他都需要驗證
                 );
