@@ -59,6 +59,7 @@ public class PostService {
             Post post = new Post();
             post.setPostId(rs.getLong("post_id"));
             post.setUserId(rs.getLong("user_id"));
+            post.setUserName(rs.getString("user_name"));
             post.setContent(rs.getString("content"));
             post.setImage(rs.getString("image"));
             post.setCreatedAt(rs.getTimestamp("created_at"));

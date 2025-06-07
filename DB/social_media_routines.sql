@@ -102,7 +102,12 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_all_posts`()
 BEGIN
-    SELECT * FROM posts ORDER BY created_at DESC;
+	SELECT 
+        p.*, 
+        u.user_name
+    FROM posts p
+    INNER JOIN users u ON p.User_ID = u.User_ID
+    ORDER BY p.Created_At DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -230,4 +235,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-07 15:22:29
+-- Dump completed on 2025-06-07 17:48:31
