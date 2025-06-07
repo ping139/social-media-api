@@ -18,8 +18,9 @@ public class SecurityConfig {
                                         "/api/users/register",
                                         "/api/users/login",
                                         "/api/users/logout",
-                                        "/api/posts/**"
-                                ).permitAll()  // 這三個路由放行，不需要登入
+                                        "/api/posts/**",
+                                        "/api/comments/**"
+                                ).permitAll()  // 這5個路由放行，不需要登入
                                 .anyRequest().authenticated()  // 其他都需要驗證
                 );
         return http.build();
