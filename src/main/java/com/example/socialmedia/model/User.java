@@ -9,6 +9,7 @@ public class User {
     private Long userId;
     private String userName;
     private String email;
+    private String account;
     
     @JsonIgnore
     private String password;

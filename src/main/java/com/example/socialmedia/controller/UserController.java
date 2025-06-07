@@ -22,7 +22,7 @@ public class UserController {
     @PostMapping("/register")
     public Response register(@RequestBody RegisterRequest request) {
         try {
-            userService.registerUser(request.getUserName(), request.getEmail(), request.getPassword());
+            userService.registerUser(request);
             return new Response("Y", "註冊成功");
         } catch (Exception e) {
             return new Response("N", "註冊失敗：" + e.getMessage());
@@ -31,7 +31,7 @@ public class UserController {
 
     @PostMapping("/login")
     public Response login(@RequestBody LoginRequest request) {
-        return userService.login(request.getEmail(), request.getPassword());
+        return userService.login(request.getAccount(), request.getPassword());
     }
 }
 
