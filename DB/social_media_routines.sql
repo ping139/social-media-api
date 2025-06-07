@@ -158,12 +158,12 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `login_user`(
-  IN p_email VARCHAR(100)
+  IN p_account VARCHAR(10)
 )
 BEGIN
-  SELECT user_id, user_name, email, password
+  SELECT account, user_id, user_name, email, password
   FROM users
-  WHERE email = p_email;
+  WHERE account = p_account;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -181,13 +181,14 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `new_user`(
+  IN p_account VARCHAR(10),
   IN p_user_name VARCHAR(30),
   IN p_email VARCHAR(100),
   IN p_password VARCHAR(255)
 )
 BEGIN
-  INSERT INTO users (user_name, email, password)
-  VALUES (p_user_name, p_email, p_password);
+  INSERT INTO users (account, user_name, email, password)
+  VALUES (p_account, p_user_name, p_email, p_password);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -229,4 +230,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-07 13:05:52
+-- Dump completed on 2025-06-07 15:22:29
