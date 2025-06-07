@@ -126,7 +126,12 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_comments_by_post_id`(IN p_post_id BIGINT)
 BEGIN
-    SELECT * FROM comments WHERE post_id = p_post_id ORDER BY created_at DESC;
+    SELECT
+		c.*,
+        u.user_name
+    FROM comments c
+    INNER JOIN users u ON c.user_id = u.user_id
+    WHERE post_id = p_post_id ORDER BY created_at DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -235,4 +240,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-07 17:48:31
+-- Dump completed on 2025-06-07 19:07:43

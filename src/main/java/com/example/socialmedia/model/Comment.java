@@ -8,6 +8,7 @@ public class Comment {
     private Long commentId;
     private Long userId;
     private Long postId;
+    private String userName;
     private String content;
     private Timestamp createdAt;
 }

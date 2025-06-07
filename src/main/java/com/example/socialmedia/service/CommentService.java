@@ -36,6 +36,7 @@ public class CommentService {
             comment.setCommentId(rs.getLong("comment_id"));
             comment.setUserId(rs.getLong("user_id"));
             comment.setPostId(rs.getLong("post_id"));
+            comment.setUserName(rs.getString("user_name"));
             comment.setContent(rs.getString("content"));
             comment.setCreatedAt(rs.getTimestamp("created_at"));
             return comment;
